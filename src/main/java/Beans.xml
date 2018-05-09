@@ -3,8 +3,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--<bean id="helloWorld" class="wxgaly.spring.bean.HelloWorld" scope="prototype">
         <property name="message" value="Hello World!"/>
@@ -30,9 +31,9 @@
 
 
     <!-- Definition for javaCollection -->
-    <bean id="javaCollection" class="wxgaly.spring.di.JavaCollection">
+    <!--<bean id="javaCollection" class="wxgaly.spring.di.JavaCollection">
 
-        <!-- results in a setAddressList(java.util.List) call -->
+        &lt;!&ndash; results in a setAddressList(java.util.List) call &ndash;&gt;
         <property name="addressList">
             <list>
                 <value>INDIA</value>
@@ -42,7 +43,7 @@
             </list>
         </property>
 
-        <!-- results in a setAddressSet(java.util.Set) call -->
+        &lt;!&ndash; results in a setAddressSet(java.util.Set) call &ndash;&gt;
         <property name="addressSet">
             <set>
                 <value>INDIA</value>
@@ -52,7 +53,7 @@
             </set>
         </property>
 
-        <!-- results in a setAddressMap(java.util.Map) call -->
+        &lt;!&ndash; results in a setAddressMap(java.util.Map) call &ndash;&gt;
         <property name="addressMap">
             <map>
                 <entry key="1" value="INDIA"/>
@@ -62,7 +63,7 @@
             </map>
         </property>
 
-        <!-- results in a setAddressProp(java.util.Properties) call -->
+        &lt;!&ndash; results in a setAddressProp(java.util.Properties) call &ndash;&gt;
         <property name="addressProp">
             <props>
                 <prop key="one">INDIA</prop>
@@ -72,6 +73,35 @@
             </props>
         </property>
 
+    </bean>-->
+
+    <!-- Definition for textEditor bean -->
+    <!--<bean id="textEditor" class="wxgaly.spring.di.TextEditor" autowire="byType">&lt;!&ndash;autowire="byName"&ndash;&gt;
+        <property name="name" value="Generic Text Editor"/>
+    </bean>
+
+    &lt;!&ndash; Definition for spellChecker bean &ndash;&gt;
+    <bean id="spellChecker" class="wxgaly.spring.di.SpellChecker">
+    </bean>-->
+
+    <!-- Definition for textEditor bean -->
+    <!--<bean id="textEditor" class="wxgaly.spring.di.TextEditor"
+          autowire="constructor">
+        <constructor-arg value="Generic Text Editor"/>
+    </bean>
+
+    &lt;!&ndash; Definition for spellChecker bean &ndash;&gt;
+    <bean id="SpellChecker" class="wxgaly.spring.di.SpellChecker">
+    </bean>
+-->
+    <context:annotation-config/>
+
+    <!-- Definition for student bean -->
+    <bean id="student" class="wxgaly.spring.di.annotation.Student">
+        <property name="name" value="Zara"/>
+
+        <!-- try without passing age and check the result -->
+        <property name="age" value="11"/>
     </bean>
 
 </beans>

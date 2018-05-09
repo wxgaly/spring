@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import wxgaly.spring.bean.HelloWorld;
 import wxgaly.spring.di.JavaCollection;
 import wxgaly.spring.di.TextEditor;
+import wxgaly.spring.di.annotation.Student;
 
 
 public class MainApplication {
@@ -48,7 +49,14 @@ public class MainApplication {
                 new ClassPathXmlApplicationContext("Beans.xml");
 //        testBean(context);
 //        testDI(context);
-        testDi2(context);
+//        testDi2(context);
+        testDIByAnnotation(context);
+    }
+
+    private static void testDIByAnnotation(ApplicationContext context) {
+        Student student = (Student) context.getBean("student");
+        System.out.println("Name : " + student.getName());
+        System.out.println("Age : " + student.getAge());
     }
 
     private static void testDi2(ApplicationContext context) {
