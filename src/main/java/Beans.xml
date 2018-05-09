@@ -11,13 +11,67 @@
     </bean>-->
 
     <!-- Definition for textEditor bean -->
-    <bean id="textEditor" class="wxgaly.spring.di.TextEditor" p:spellChecker-ref="spellChecker">
-        <!--<constructor-arg ref="spellChecker"/>-->
-        <!--<property name="spellChecker" ref="spellChecker"/>-->
-    </bean>
+    <!--<bean id="textEditor" class="wxgaly.spring.di.TextEditor" p:spellChecker-ref="spellChecker">
+        &lt;!&ndash;<constructor-arg ref="spellChecker"/>&ndash;&gt;
+        &lt;!&ndash;<property name="spellChecker" ref="spellChecker"/>&ndash;&gt;
+    </bean>-->
 
     <!-- Definition for spellChecker bean -->
-    <bean id="spellChecker" class="wxgaly.spring.di.SpellChecker">
+    <!-- <bean id="spellChecker" class="wxgaly.spring.di.SpellChecker">
+     </bean>-->
+
+
+    <!-- Definition for textEditor bean using inner bean -->
+    <!--<bean id="textEditor" class="wxgaly.spring.di.TextEditor">-->
+    <!--<property name="spellChecker">-->
+    <!--<bean id="spellChecker" class="wxgaly.spring.di.SpellChecker"/>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+
+    <!-- Definition for javaCollection -->
+    <bean id="javaCollection" class="wxgaly.spring.di.JavaCollection">
+
+        <!-- results in a setAddressList(java.util.List) call -->
+        <property name="addressList">
+            <list>
+                <value>INDIA</value>
+                <value>Pakistan</value>
+                <value>USA</value>
+                <value>USA</value>
+            </list>
+        </property>
+
+        <!-- results in a setAddressSet(java.util.Set) call -->
+        <property name="addressSet">
+            <set>
+                <value>INDIA</value>
+                <value>Pakistan</value>
+                <value>USA</value>
+                <value>USA</value>
+            </set>
+        </property>
+
+        <!-- results in a setAddressMap(java.util.Map) call -->
+        <property name="addressMap">
+            <map>
+                <entry key="1" value="INDIA"/>
+                <entry key="2" value="Pakistan"/>
+                <entry key="3" value="USA"/>
+                <entry key="4" value="USA"/>
+            </map>
+        </property>
+
+        <!-- results in a setAddressProp(java.util.Properties) call -->
+        <property name="addressProp">
+            <props>
+                <prop key="one">INDIA</prop>
+                <prop key="two">Pakistan</prop>
+                <prop key="three">USA</prop>
+                <prop key="four">USA</prop>
+            </props>
+        </property>
+
     </bean>
 
 </beans>

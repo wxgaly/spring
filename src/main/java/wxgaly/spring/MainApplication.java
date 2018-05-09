@@ -3,6 +3,7 @@ package wxgaly.spring;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import wxgaly.spring.bean.HelloWorld;
+import wxgaly.spring.di.JavaCollection;
 import wxgaly.spring.di.TextEditor;
 
 
@@ -46,7 +47,16 @@ public class MainApplication {
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("Beans.xml");
 //        testBean(context);
-        testDI(context);
+//        testDI(context);
+        testDi2(context);
+    }
+
+    private static void testDi2(ApplicationContext context) {
+        JavaCollection jc = (JavaCollection) context.getBean("javaCollection");
+        jc.getAddressList();
+        jc.getAddressSet();
+        jc.getAddressMap();
+        jc.getAddressProp();
     }
 
     private static void testDI(ApplicationContext context) {
